@@ -16,7 +16,7 @@ class Country(models.Model):
 
 
 class City(models.Model):
-    country = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='cities')
+    country_id = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='cities')
     city_name = models.CharField(max_length=255)
 
     class Meta:
@@ -24,4 +24,4 @@ class City(models.Model):
         verbose_name_plural = 'cities'
 
     def __str__(self):
-        return f'{self.city_name}, {self.country.country_name}'
+        return f'{self.city_name}, {self.country_id.country_name}'

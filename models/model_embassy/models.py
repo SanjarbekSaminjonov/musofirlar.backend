@@ -6,7 +6,7 @@ from model_location.models import City
 
 
 class Embassy(models.Model):
-    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='embassies')
+    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='embassies')
     address = models.TextField()
 
     embassy_title = models.CharField(max_length=255)
