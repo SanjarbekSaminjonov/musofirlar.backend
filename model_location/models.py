@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Country(models.Model):
-    country_name = models.CharField(max_length=255)
+    country_name = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = 'country'
@@ -16,8 +16,8 @@ class Country(models.Model):
 
 
 class City(models.Model):
-    country_id = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='cities')
-    city_name = models.CharField(max_length=255)
+    country_id = models.ForeignKey(Country, on_delete=models.CASCADE, related_name='cities', null=True, blank=True)
+    city_name = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = 'city'

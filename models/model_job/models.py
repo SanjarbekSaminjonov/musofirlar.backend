@@ -7,14 +7,14 @@ from model_location.models import City
 
 
 class Job(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='jobs')
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='jobs', null=True, blank=True)
 
-    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='jobs')
-    address = models.TextField()
+    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='jobs', null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
 
-    description = models.TextField()
-    phone_number = models.CharField(max_length=255)
-    job_title = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+    phone_number = models.CharField(max_length=255, null=True, blank=True)
+    job_title = models.CharField(max_length=255, null=True, blank=True)
     job_type = models.CharField(max_length=255, null=True, blank=True)
     job_time = models.CharField(max_length=255, null=True, blank=True)
     working_hours = models.CharField(max_length=255, null=True, blank=True)

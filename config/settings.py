@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'models.model_flat.apps.ModelFlatConfig',
     'models.model_job.apps.ModelJobConfig',
     'models.model_embassy.apps.ModelEmbassyConfig',
+    'models.model_canteen.apps.ModelCanteenConfig',
 ]
 
 MIDDLEWARE = [

@@ -6,14 +6,14 @@ from model_location.models import City
 
 
 class Embassy(models.Model):
-    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='embassies')
-    address = models.TextField()
+    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='embassies', null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
 
-    embassy_title = models.CharField(max_length=255)
-    map_url = models.CharField(max_length=1000)
-    site_url = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
+    embassy_title = models.CharField(max_length=255, null=True, blank=True)
+    map_url = models.CharField(max_length=1000, null=True, blank=True)
+    site_url = models.CharField(max_length=255, null=True, blank=True)
+    phone_number = models.CharField(max_length=255, null=True, blank=True)
+    email = models.CharField(max_length=255, null=True, blank=True)
     telegram = models.CharField(max_length=255, null=True, blank=True)
     facebook = models.CharField(max_length=255, null=True, blank=True)
 

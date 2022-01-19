@@ -1,21 +1,18 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 from model_location.models import City
-
+from uuid import uuid4
 
 # Create your models here.
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, first_name, phone_number, password=None, **extra_fields):
-        if not first_name:
-            raise ValueError('The name is required')
+    def create_user(self, phone_number, password=None, **extra_fields):
 
         if not phone_number:
             raise ValueError('Phone number is required')
 
         user = self.model(
-            first_name=first_name,
             phone_number=phone_number,
             **extra_fields
         )
@@ -25,9 +22,8 @@ class UserManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, first_name, phone_number, password):
+    def create_superuser(self, phone_number, password):
         user = self.create_user(
-            first_name=first_name,
             phone_number=phone_number,
             password=password
         )
@@ -41,11 +37,14 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    first_name = models.CharField(max_length=255)
+    id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
+    password = models.CharField(max_length=255)
+
+    first_name = models.CharField(max_length=255, null=True, blank=True)
     last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(max_length=255, unique=True, null=True, blank=True)
     phone_number = models.CharField(max_length=255, unique=True)
-    city = models.ForeignKey(City, on_delete=models.SET_NULL, related_name='users', null=True, blank=True)
+    city_id = models.ForeignKey(City, on_delete=models.SET_NULL, related_name='users', null=True, blank=True)
 
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)
@@ -55,7 +54,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'phone_number'
-    REQUIRED_FIELDS = ['first_name']
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
@@ -63,12 +62,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = 'user'
         verbose_name_plural = 'users'
 
-    def get_full_name(self):
-        full_name = f'{self.first_name} {self.phone_number}'
-        return full_name.strip()
-
     def __str__(self) -> str:
-        return self.get_full_name()
+        return self.phone_number
 
     def has_perm(self, perm, obj=None) -> bool:
         return self.is_admin
