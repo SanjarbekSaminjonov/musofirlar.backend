@@ -41,11 +41,16 @@ INSTALLED_APPS = [
 
     # local apps
     'accounts.apps.AccountsConfig',
+
+    # main models
     'model_location.apps.ModelLocationConfig',
     'models.model_flat.apps.ModelFlatConfig',
     'models.model_job.apps.ModelJobConfig',
     'models.model_embassy.apps.ModelEmbassyConfig',
     'models.model_canteen.apps.ModelCanteenConfig',
+    'models.model_mosque.apps.ModelMosqueConfig',
+    'models.model_taxi.apps.ModelTaxiConfig',
+    'models.model_question.apps.ModelQuestionConfig',
 ]
 
 MIDDLEWARE = [
