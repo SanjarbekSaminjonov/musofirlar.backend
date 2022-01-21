@@ -1,4 +1,5 @@
 venv
+uploads
 .idea
 *.log
 *.pot

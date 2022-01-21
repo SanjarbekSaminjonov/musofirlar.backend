@@ -14,17 +14,7 @@ class CountryCreateAPIView(generics.CreateAPIView):
     serializer_class = CountrySerializer
 
 
-class CountryDetailAPIView(generics.RetrieveAPIView):
-    queryset = Country.objects.all()
-    serializer_class = CountrySerializer
-
-
-class CountryUpdateAPIView(generics.UpdateAPIView):
-    queryset = Country.objects.all()
-    serializer_class = CountrySerializer
-
-
-class CountryDeleteAPIView(generics.DestroyAPIView):
+class CountryDetailUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
 
@@ -39,16 +29,6 @@ class CityCreateAPIView(generics.CreateAPIView):
     serializer_class = CitySerializer
 
 
-class CityDetailAPIView(generics.RetrieveAPIView):
-    queryset = City.objects.all()
-    serializer_class = CitySerializer
-
-
-class CityUpdateAPIView(generics.UpdateAPIView):
-    queryset = City.objects.all()
-    serializer_class = CitySerializer
-
-
-class CityDeleteAPIView(generics.DestroyAPIView):
+class CityDetailUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
