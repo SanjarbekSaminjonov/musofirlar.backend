@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-##zb$1#k9nvl-m88adnt0dd9_bcys+bp2&&j!kvct%6$z8udy0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     # 3rd apps
     'rest_framework',
+    'corsheaders',
 
     # local apps
     'accounts.apps.AccountsConfig',
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -144,3 +146,5 @@ MEDIA_ROOT = BASE_DIR / 'static/uploads'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+CORS_ALLOW_ALL_ORIGINS = True
