@@ -25,4 +25,4 @@ class Flat(models.Model):
         verbose_name_plural = 'flats'
 
     def __str__(self):
-        return f'{self.user_id.first_name} - {self.address}, {self.city_id.city_name}'
+        return f'{self.user_id.first_name} - {self.address}'
