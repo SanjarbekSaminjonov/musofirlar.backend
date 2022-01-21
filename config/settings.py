@@ -42,15 +42,16 @@ INSTALLED_APPS = [
     # local apps
     'accounts.apps.AccountsConfig',
 
-    # main models
-    'model_location.apps.ModelLocationConfig',
-    'models.model_flat.apps.ModelFlatConfig',
-    'models.model_job.apps.ModelJobConfig',
-    'models.model_embassy.apps.ModelEmbassyConfig',
-    'models.model_canteen.apps.ModelCanteenConfig',
-    'models.model_mosque.apps.ModelMosqueConfig',
-    'models.model_taxi.apps.ModelTaxiConfig',
-    'models.model_question.apps.ModelQuestionConfig',
+    # all models
+    'model_location.apps.ModelLocationConfig',  # location model;
+    'model_media.apps.ModelMediaConfig',  # media model
+    'models.model_flat.apps.ModelFlatConfig',  # flat model
+    'models.model_job.apps.ModelJobConfig',  # job model
+    'models.model_embassy.apps.ModelEmbassyConfig',  # embassy model
+    'models.model_canteen.apps.ModelCanteenConfig',  # canteen model
+    'models.model_mosque.apps.ModelMosqueConfig',  # mosque model
+    'models.model_taxi.apps.ModelTaxiConfig',  # taxi model
+    'models.model_question.apps.ModelQuestionConfig',  # question and comment model
 ]
 
 MIDDLEWARE = [
@@ -116,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -126,6 +127,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MEDIA_URL = 'images/'
+
+MEDIA_ROOT = BASE_DIR / 'static/uploads'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
