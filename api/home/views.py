@@ -34,6 +34,14 @@ def overview(request):
             'city update': '/location/city/{id}/update/',
             'city delete': '/location/city/{id}/delete/',
         },
+        'images': {
+            'images list': '/image/',
+            'image create': '/image/create/',
+            'image detail': '/image/{id}/',
+            'image update': '/image/{id}/update/',
+            'image delete': '/image/{id}/delete/',
+
+        },
         'flat': {
             'flats list': '/flat/',
             'flat create': '/flat/create/',

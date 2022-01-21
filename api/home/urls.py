@@ -9,4 +9,5 @@ urlpatterns = [
     path('job/', include('api.job.urls')),
     path('embassy/', include('api.embassy.urls')),
     path('canteen/', include('api.canteen.urls')),
+    path('image/', include('api.media.urls')),
 ]
