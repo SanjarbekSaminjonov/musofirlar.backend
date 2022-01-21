@@ -3,9 +3,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from django.shortcuts import redirect
+
+
+def home(request):
+    return redirect('overview')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('api.home.urls')),
+    path('api/v1/', include('api.home.urls')),
+    path('', home, name='home'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
