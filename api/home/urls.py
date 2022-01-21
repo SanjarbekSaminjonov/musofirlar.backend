@@ -7,4 +7,6 @@ urlpatterns = [
     path('location/', include('api.location.urls')),
     path('flat/', include('api.flat.urls')),
     path('job/', include('api.job.urls')),
+    path('embassy/', include('api.embassy.urls')),
+    path('canteen/', include('api.canteen.urls')),
 ]

@@ -16,8 +16,16 @@ class FlatCreateAPIView(generics.CreateAPIView):
     serializer_class = FlatSerializer
 
 
-class FlatDetailUpdateDeleteAPIView(generics.RetrieveUpdateDestroyAPIView):
+class FlatDetailAPIView(generics.RetrieveAPIView):
     queryset = Flat.objects.all()
     serializer_class = FlatSerializer
 
 
+class FlatUpdateAPIView(generics.UpdateAPIView):
+    queryset = Flat.objects.all()
+    serializer_class = FlatSerializer
+
+
+class FlatDeleteAPIView(generics.DestroyAPIView):
+    queryset = Flat.objects.all()
+    serializer_class = FlatSerializer
