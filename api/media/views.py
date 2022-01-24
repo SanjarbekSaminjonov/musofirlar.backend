@@ -1,6 +1,6 @@
 from rest_framework import generics
 from model_media.models import Media
-from .serializers import MediaSerializer
+from model_media.serializers import MediaSerializer
 
 
 # from rest_framework.response import Response

@@ -44,7 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(max_length=255, null=True, blank=True)
     email = models.EmailField(max_length=255, unique=True, null=True, blank=True)
     phone_number = models.CharField(max_length=255, unique=True)
-    city_id = models.ForeignKey(City, on_delete=models.SET_NULL, related_name='users', null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.SET_NULL, related_name='users', null=True, blank=True)
 
     date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(auto_now=True)

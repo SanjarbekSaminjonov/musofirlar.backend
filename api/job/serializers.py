@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from models.model_job.models import Job
-from api.media.serializers import MediaSerializer
+from model_media.serializers import MediaSerializer
 
 
 class JobSerializer(serializers.ModelSerializer):

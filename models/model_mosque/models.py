@@ -5,14 +5,15 @@ from model_location.models import City
 
 
 class Mosque(models.Model):
-    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='mosques', null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='mosques', null=True, blank=True)
     address = models.TextField(null=True, blank=True)
+    location_url = models.CharField(max_length=1000, null=True, blank=True)
 
-    title = models.CharField(max_length=500, null=True, blank=True)
+    name = models.CharField(max_length=500, null=True, blank=True)
 
     class Meta:
         verbose_name = 'mosque'
         verbose_name_plural = 'mosques'
 
     def __str__(self):
-        return self.title
+        return self.name

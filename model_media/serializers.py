@@ -1,7 +1,8 @@
 from rest_framework import serializers
-from model_media.models import Media
+from .models import Media
 
 
+# Media model serializer
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Media

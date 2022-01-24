@@ -1,6 +1,6 @@
 from rest_framework import generics
 from models.model_canteen.models import Canteen
-from .serializers import CanteenSerializer
+from models.model_canteen.serializers import CanteenSerializer
 
 
 class CanteenListAPIView(generics.ListAPIView):

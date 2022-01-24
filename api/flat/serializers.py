@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from models.model_flat.models import Flat
-from api.media.serializers import MediaSerializer
+from model_media.serializers import MediaSerializer
 
 
 class FlatSerializer(serializers.ModelSerializer):

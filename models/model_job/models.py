@@ -7,9 +7,9 @@ from model_location.models import City
 
 
 class Job(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='jobs', null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='jobs', null=True, blank=True)
 
-    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='jobs', null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='jobs', null=True, blank=True)
     address = models.TextField(null=True, blank=True)
 
     description = models.TextField(null=True, blank=True)
@@ -26,4 +26,4 @@ class Job(models.Model):
         verbose_name_plural = 'jobs'
 
     def __str__(self):
-        return f'{self.job_title} - {self.address}, {self.city_id.city_name}'
+        return f'{self.job_title} - {self.address}, {self.city.name}'

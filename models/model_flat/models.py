@@ -7,9 +7,9 @@ from model_location.models import City
 
 
 class Flat(models.Model):
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name='flats', null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='flats', null=True, blank=True)
 
-    city_id = models.ForeignKey(City, on_delete=models.CASCADE, related_name='flats', null=True, blank=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, related_name='flats', null=True, blank=True)
     address = models.TextField(null=True, blank=True)
 
     description = models.TextField(null=True, blank=True)
@@ -25,4 +25,4 @@ class Flat(models.Model):
         verbose_name_plural = 'flats'
 
     def __str__(self):
-        return f'{self.user_id.first_name} - {self.address}'
+        return f'{self.user.first_name} - {self.address}'

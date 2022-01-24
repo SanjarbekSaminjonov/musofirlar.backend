@@ -1,7 +1,7 @@
 from rest_framework import generics
 
 from model_location.models import Country, City
-from .serializers import CountrySerializer, CitySerializer
+from model_location.serializers import CountrySerializer, CitySerializer
 
 
 class CountryListAPIView(generics.ListAPIView):

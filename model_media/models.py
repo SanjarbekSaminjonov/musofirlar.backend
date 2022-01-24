@@ -27,10 +27,11 @@ class Media(models.Model):
 
     def save(self, *args, **kwargs):
         self.image.name = self.image.name.replace(' ', '')
-        self.image.name = self.image.name.replace(',', '-')
-        self.image.name = self.image.name.replace('_', '-')
+        self.image.name = self.image.name.replace(',', '')
+        self.image.name = self.image.name.replace('_', '')
+        self.image.name = self.image.name.replace('\'', '')
 
-        self.image.name = str(uuid4()) + '-' + self.image.name
+        self.image.name = str(uuid4()) + '.' + self.image.name.split('.')[-1]
         super(Media, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):

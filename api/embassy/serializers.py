@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from models.model_embassy.models import Embassy
-from api.media.serializers import MediaSerializer
+from model_media.serializers import MediaSerializer
 
 
 class EmbassySerializer(serializers.ModelSerializer):
