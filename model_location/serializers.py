@@ -2,6 +2,20 @@ from rest_framework import serializers
 from .models import Country, City
 
 
+# City model serializer
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = City
+        fields = '__all__'
+
+
+# Country model serializer
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Country
+        fields = '__all__'
+
+
 # Country model serializer for the City model serializer
 class CountryForCity(serializers.ModelSerializer):
     class Meta:
@@ -9,9 +23,9 @@ class CountryForCity(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# City model serializer
-class CitySerializer(serializers.ModelSerializer):
-    country = CountryForCity(read_only=True)
+# City model serializer to view
+class CityViewSerializer(serializers.ModelSerializer):
+    country = CountryForCity()
 
     class Meta:
         model = City
@@ -22,11 +36,11 @@ class CitySerializer(serializers.ModelSerializer):
 class CityForCountry(serializers.ModelSerializer):
     class Meta:
         model = City
-        fields = ('id', 'city_name')
+        fields = ('id', 'name')
 
 
-# Country model serializer
-class CountrySerializer(serializers.ModelSerializer):
+# Country model serializer to view
+class CountryViewSerializer(serializers.ModelSerializer):
     cities = CityForCountry(many=True, read_only=True)
 
     class Meta:

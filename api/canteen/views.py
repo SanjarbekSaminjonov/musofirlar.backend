@@ -1,11 +1,11 @@
 from rest_framework import generics
 from models.model_canteen.models import Canteen
-from models.model_canteen.serializers import CanteenSerializer
+from models.model_canteen.serializers import CanteenSerializer, CanteenViewSerializer
 
 
 class CanteenListAPIView(generics.ListAPIView):
     queryset = Canteen.objects.all()
-    serializer_class = CanteenSerializer
+    serializer_class = CanteenViewSerializer
 
 
 class CanteenCreateAPIView(generics.CreateAPIView):
@@ -15,7 +15,7 @@ class CanteenCreateAPIView(generics.CreateAPIView):
 
 class CanteenDetailAPIView(generics.RetrieveAPIView):
     queryset = Canteen.objects.all()
-    serializer_class = CanteenSerializer
+    serializer_class = CanteenViewSerializer
 
 
 class CanteenUpdateAPIView(generics.UpdateAPIView):

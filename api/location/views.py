@@ -1,12 +1,12 @@
 from rest_framework import generics
 
 from model_location.models import Country, City
-from model_location.serializers import CountrySerializer, CitySerializer
+from model_location.serializers import CountryViewSerializer, CountrySerializer, CitySerializer, CityViewSerializer
 
 
 class CountryListAPIView(generics.ListAPIView):
     queryset = Country.objects.all()
-    serializer_class = CountrySerializer
+    serializer_class = CountryViewSerializer
 
 
 class CountryCreateAPIView(generics.CreateAPIView):
@@ -16,7 +16,7 @@ class CountryCreateAPIView(generics.CreateAPIView):
 
 class CountryDetailAPIView(generics.RetrieveAPIView):
     queryset = Country.objects.all()
-    serializer_class = CountrySerializer
+    serializer_class = CountryViewSerializer
 
 
 class CountryUpdateAPIView(generics.UpdateAPIView):
@@ -31,7 +31,7 @@ class CountryDeleteAPIView(generics.DestroyAPIView):
 
 class CityListAPIView(generics.ListAPIView):
     queryset = City.objects.all()
-    serializer_class = CitySerializer
+    serializer_class = CityViewSerializer
 
 
 class CityCreateAPIView(generics.CreateAPIView):
@@ -41,7 +41,7 @@ class CityCreateAPIView(generics.CreateAPIView):
 
 class CityDetailAPIView(generics.RetrieveAPIView):
     queryset = City.objects.all()
-    serializer_class = CitySerializer
+    serializer_class = CityViewSerializer
 
 
 class CityUpdateAPIView(generics.UpdateAPIView):
@@ -52,4 +52,3 @@ class CityUpdateAPIView(generics.UpdateAPIView):
 class CityDeleteAPIView(generics.DestroyAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-
