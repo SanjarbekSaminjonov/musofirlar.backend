@@ -11,7 +11,7 @@ class CountryForCity(serializers.ModelSerializer):
 
 # City model serializer
 class CitySerializer(serializers.ModelSerializer):
-    country_id = CountryForCity(read_only=True)
+    country = CountryForCity(read_only=True)
 
     class Meta:
         model = City

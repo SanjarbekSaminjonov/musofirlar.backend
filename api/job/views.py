@@ -1,6 +1,6 @@
 from rest_framework import generics
 from models.model_job.models import Job
-from .serializers import JobSerializer
+from models.model_job.serializers import JobSerializer
 
 
 # Create your views here.

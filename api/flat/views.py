@@ -1,6 +1,6 @@
 from rest_framework import generics
 from models.model_flat.models import Flat
-from .serializers import FlatSerializer
+from models.model_flat.serializers import FlatSerializer
 
 
 # Create your views here.

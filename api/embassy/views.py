@@ -1,7 +1,7 @@
 from rest_framework import generics
 # from rest_framework.permissions import IsAuthenticated
 from models.model_embassy.models import Embassy
-from .serializers import EmbassySerializer
+from models.model_embassy.serializers import EmbassySerializer
 
 
 class EmbassyListAPIView(generics.ListAPIView):
