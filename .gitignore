@@ -1,5 +1,6 @@
 venv
 uploads
+staticfiles
 .idea
 *.log
 *.pot

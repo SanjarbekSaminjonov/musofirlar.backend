@@ -12,7 +12,17 @@ from models.model_taxi.models import Taxi
 # Create your models here.
 
 
+class MediaQuerySet(models.QuerySet):
+    def delete(self, *args, **kwargs):
+        for media in self:
+            media.image.delete()
+        super(MediaQuerySet, self).delete(*args, **kwargs)
+
+
 class Media(models.Model):
+
+    objects = MediaQuerySet.as_manager()
+
     flat_id = models.ForeignKey(Flat, on_delete=models.CASCADE, related_name="images", null=True, blank=True)
     embassy_id = models.ForeignKey(Embassy, on_delete=models.CASCADE, related_name="images", null=True, blank=True)
     canteen_id = models.ForeignKey(Canteen, on_delete=models.CASCADE, related_name="images", null=True, blank=True)
@@ -26,18 +36,14 @@ class Media(models.Model):
         verbose_name_plural = 'images'
 
     def save(self, *args, **kwargs):
-        self.image.name = self.image.name.replace(' ', '')
-        self.image.name = self.image.name.replace(',', '')
-        self.image.name = self.image.name.replace('_', '')
-        self.image.name = self.image.name.replace('\'', '')
-
-        self.image.name = str(uuid4()) + '.' + self.image.name.split('.')[-1]
+        if self.image:
+            self.image.name = str(uuid4()) + '.' + self.image.name.split('.')[-1]
         super(Media, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
-        storage, path = self.image.storage, self.image.path
+        if self.image:
+            self.image.delete()
         super(Media, self).delete(*args, **kwargs)
-        storage.delete(path)
 
     def __str__(self):
         return self.image.name
