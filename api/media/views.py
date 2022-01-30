@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics
+from api.permissions import IsAuthor
 from model_media.models import Media
 from model_media.serializers import MediaSerializer
 
@@ -16,16 +17,15 @@ class MediaDetailAPIView(generics.RetrieveAPIView):
 class MediaCreateAPIView(generics.CreateAPIView):
     queryset = Media.objects.all()
     serializer_class = MediaSerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class MediaUpdateAPIView(generics.UpdateAPIView):
     queryset = Media.objects.all()
     serializer_class = MediaSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class MediaDeleteAPIView(generics.DestroyAPIView):
     queryset = Media.objects.all()
     serializer_class = MediaSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]

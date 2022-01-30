@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics
+from api.permissions import IsAuthor
 from models.model_canteen.models import Canteen
 from models.model_canteen.serializers import CanteenSerializer, CanteenViewSerializer
 
@@ -16,16 +17,15 @@ class CanteenDetailAPIView(generics.RetrieveAPIView):
 class CanteenCreateAPIView(generics.CreateAPIView):
     queryset = Canteen.objects.all()
     serializer_class = CanteenSerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class CanteenUpdateAPIView(generics.UpdateAPIView):
     queryset = Canteen.objects.all()
     serializer_class = CanteenSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class CanteenDeleteAPIView(generics.DestroyAPIView):
     queryset = Canteen.objects.all()
     serializer_class = CanteenSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]

@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics
+from api.permissions import IsAuthor
 from models.model_flat.models import Flat
 from models.model_flat.serializers import FlatSerializer, FlatViewSerializer
 
@@ -19,16 +20,15 @@ class FlatDetailAPIView(generics.RetrieveAPIView):
 class FlatCreateAPIView(generics.CreateAPIView):
     queryset = Flat.objects.all()
     serializer_class = FlatSerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class FlatUpdateAPIView(generics.UpdateAPIView):
     queryset = Flat.objects.all()
     serializer_class = FlatSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class FlatDeleteAPIView(generics.DestroyAPIView):
     queryset = Flat.objects.all()
     serializer_class = FlatSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]

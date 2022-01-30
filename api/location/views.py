@@ -1,5 +1,5 @@
-from rest_framework import generics, permissions
-
+from rest_framework import generics
+from api.permissions import IsAuthor
 from model_location.models import Country, City
 from model_location.serializers import CountryViewSerializer, CountrySerializer, CitySerializer, CityViewSerializer
 
@@ -17,19 +17,18 @@ class CountryDetailAPIView(generics.RetrieveAPIView):
 class CountryCreateAPIView(generics.CreateAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class CountryUpdateAPIView(generics.UpdateAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class CountryDeleteAPIView(generics.DestroyAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class CityListAPIView(generics.ListAPIView):
@@ -45,16 +44,15 @@ class CityDetailAPIView(generics.RetrieveAPIView):
 class CityCreateAPIView(generics.CreateAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class CityUpdateAPIView(generics.UpdateAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class CityDeleteAPIView(generics.DestroyAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]

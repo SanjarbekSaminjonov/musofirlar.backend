@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics
+from api.permissions import IsAuthor
 from models.model_embassy.models import Embassy
 from models.model_embassy.serializers import EmbassySerializer, EmbassyViewSerializer
 
@@ -16,16 +17,15 @@ class EmbassyDetailAPIView(generics.RetrieveAPIView):
 class EmbassyCreateAPIView(generics.CreateAPIView):
     queryset = Embassy.objects.all()
     serializer_class = EmbassySerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class EmbassyUpdateAPIView(generics.UpdateAPIView):
     queryset = Embassy.objects.all()
     serializer_class = EmbassySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class EmbassyDeleteAPIView(generics.DestroyAPIView):
     queryset = Embassy.objects.all()
     serializer_class = EmbassySerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]

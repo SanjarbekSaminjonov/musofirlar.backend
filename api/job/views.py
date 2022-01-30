@@ -1,4 +1,5 @@
-from rest_framework import generics, permissions
+from rest_framework import generics
+from api.permissions import IsAuthor
 from models.model_job.models import Job
 from models.model_job.serializers import JobSerializer, JobViewSerializer
 
@@ -19,16 +20,15 @@ class JobDetailAPIView(generics.RetrieveAPIView):
 class JobCreateAPIView(generics.CreateAPIView):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
-    permission_classes = (permissions.IsAuthenticated,)
 
 
 class JobUpdateAPIView(generics.UpdateAPIView):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
 
 
 class JobDeleteAPIView(generics.DestroyAPIView):
     queryset = Job.objects.all()
     serializer_class = JobSerializer
-    permission_classes = (permissions.IsAuthenticated,)
+    permission_classes = [IsAuthor]
