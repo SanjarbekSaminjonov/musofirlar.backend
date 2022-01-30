@@ -2,19 +2,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from config.settings import DEBUG
 
-# from accounts.models import User
-# from api.auth.serializers import UserSerializer
-
-
-# @api_view(['GET'])
-# def get_me(request):
-#     # if request.user.is_authenticated:
-#     #     user = UserSerializer(request.user, many=False).data
-#     # else:
-#     #     user = 'You are not authenticated'
-#     user = 'You are not authenticated'
-#     return Response(user)
-
 
 @api_view(['GET'])
 def overview(request):
@@ -22,8 +9,8 @@ def overview(request):
         url_v1 = "http://127.0.0.1:8000/api/v1"
     else:
         url_v1 = "https://musofir.pythonanywhere.com/api/v1"
+
     urls = {
-        # 'my self': url_v1 + '/get-me/',
         'country': {
             'countries list': url_v1 + '/location/country/',
             'country create': url_v1 + '/location/country/create/',
