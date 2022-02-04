@@ -6,7 +6,7 @@ from .models import Media
 class MediaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Media
-        fields = '__all__'
+        fields = ('id', 'image', 'flat_id', 'embassy_id', 'canteen_id')
 
 
 # Media model serializer to view
