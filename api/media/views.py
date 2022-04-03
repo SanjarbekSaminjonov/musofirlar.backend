@@ -1,6 +1,7 @@
 from rest_framework import generics
 from model_media.models import Media
 from model_media.serializers import MediaSerializer
+from api.permissions import IsAuthor
 
 
 class MediaListAPIView(generics.ListAPIView):
